@@ -1,24 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Card View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CardViewController" customModule="CoffeeRewardsScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CoffeeBeansLight" translatesAutoresizingMaskIntoConstraints="NO" id="wkk-4q-P4w">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1hI-lu-GCD" userLabel="Card">
+                                <rect key="frame" x="27.5" y="53.5" width="320" height="560"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CoavaLogo_rotated" translatesAutoresizingMaskIntoConstraints="NO" id="3ah-gB-V6A">
+                                        <rect key="frame" x="80" y="130" width="160" height="300"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="160" id="ZZK-jA-6oe"/>
+                                            <constraint firstAttribute="height" constant="300" id="m06-aW-XME"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="560" id="2xp-av-uy4"/>
+                                    <constraint firstItem="3ah-gB-V6A" firstAttribute="centerX" secondItem="1hI-lu-GCD" secondAttribute="centerX" id="RlW-qD-xeC"/>
+                                    <constraint firstAttribute="width" constant="320" id="dZp-9P-Og1"/>
+                                    <constraint firstItem="3ah-gB-V6A" firstAttribute="centerY" secondItem="1hI-lu-GCD" secondAttribute="centerY" id="pin-De-ast"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddPunch" translatesAutoresizingMaskIntoConstraints="NO" id="xH1-TX-5DS">
+                                <rect key="frame" x="257.5" y="493.5" width="80" height="80"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UseCardCoffee" translatesAutoresizingMaskIntoConstraints="NO" id="qop-PZ-CbL">
+                                <rect key="frame" x="257.5" y="93.5" width="80" height="80"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="320" translatesAutoresizingMaskIntoConstraints="NO" id="hGS-IL-Svc">
+                                <rect key="frame" x="257.5" y="93.5" width="80" height="480"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h16-sC-wH1">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="0Pb-5g-iUm"/>
+                                            <constraint firstAttribute="height" constant="80" id="ucs-LT-ITb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <connections>
+                                            <action selector="usePointsTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VEL-t3-7LV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZBY-Mw-plf">
+                                        <rect key="frame" x="0.0" y="400" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="Uoa-7P-SRm"/>
+                                            <constraint firstAttribute="width" constant="80" id="nYu-28-frf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="getCode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RVp-th-GT1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0GV-Y4-Lqj">
+                                <rect key="frame" x="27.5" y="68.5" width="70" height="530"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="530" id="lea-g3-cfP"/>
+                                    <constraint firstAttribute="width" constant="70" id="sqt-oH-Tn1"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pQI-CC-odX">
+                                    <size key="itemSize" width="40" height="40"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CoffeeCupCollectionCell" id="dqH-dn-TQW" customClass="CoffeeCupCollectionViewCell" customModule="CoffeeRewardsScanner" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="20" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JbZ-3s-1x0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="JbZ-3s-1x0" firstAttribute="centerY" secondItem="dqH-dn-TQW" secondAttribute="centerY" id="UrF-LE-LB9"/>
+                                            <constraint firstItem="JbZ-3s-1x0" firstAttribute="height" secondItem="dqH-dn-TQW" secondAttribute="height" id="iJb-CL-ZAC"/>
+                                            <constraint firstItem="JbZ-3s-1x0" firstAttribute="width" secondItem="dqH-dn-TQW" secondAttribute="width" id="rs7-zm-5Jr"/>
+                                            <constraint firstItem="JbZ-3s-1x0" firstAttribute="centerX" secondItem="dqH-dn-TQW" secondAttribute="centerX" id="t5o-lv-yuS"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="cupImageView" destination="JbZ-3s-1x0" id="VTQ-9L-AbY"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="4eq-kf-b3F"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="pZI-Pu-4vs"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0GV-Y4-Lqj" firstAttribute="top" secondItem="1hI-lu-GCD" secondAttribute="top" constant="15" id="7gn-NO-tR7"/>
+                            <constraint firstItem="xH1-TX-5DS" firstAttribute="leading" secondItem="ZBY-Mw-plf" secondAttribute="leading" id="CGw-sV-UOy"/>
+                            <constraint firstItem="hGS-IL-Svc" firstAttribute="bottom" secondItem="1hI-lu-GCD" secondAttribute="bottom" constant="-40" id="ENo-xM-eEx"/>
+                            <constraint firstItem="wkk-4q-P4w" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="FG7-oB-lKi"/>
+                            <constraint firstItem="qop-PZ-CbL" firstAttribute="width" secondItem="h16-sC-wH1" secondAttribute="width" id="GHT-A0-Av5"/>
+                            <constraint firstItem="qop-PZ-CbL" firstAttribute="leading" secondItem="h16-sC-wH1" secondAttribute="leading" id="KE7-oG-GYA"/>
+                            <constraint firstItem="wkk-4q-P4w" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="Szi-oH-A4W"/>
+                            <constraint firstItem="hGS-IL-Svc" firstAttribute="top" secondItem="1hI-lu-GCD" secondAttribute="top" constant="40" id="VYe-jg-3IT"/>
+                            <constraint firstItem="hGS-IL-Svc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Vov-GB-EzR"/>
+                            <constraint firstItem="0GV-Y4-Lqj" firstAttribute="bottom" secondItem="1hI-lu-GCD" secondAttribute="bottom" constant="-15" id="Xbe-cj-32J"/>
+                            <constraint firstItem="xH1-TX-5DS" firstAttribute="top" secondItem="ZBY-Mw-plf" secondAttribute="top" id="dvW-7m-5n7"/>
+                            <constraint firstItem="1hI-lu-GCD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="kee-qX-NCx"/>
+                            <constraint firstItem="wkk-4q-P4w" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="nZF-f6-QtP"/>
+                            <constraint firstItem="1hI-lu-GCD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="p74-Ix-jUP"/>
+                            <constraint firstItem="0GV-Y4-Lqj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qqU-Ag-usk"/>
+                            <constraint firstItem="hGS-IL-Svc" firstAttribute="trailing" secondItem="1hI-lu-GCD" secondAttribute="trailing" constant="-10" id="t90-S5-lRc"/>
+                            <constraint firstItem="xH1-TX-5DS" firstAttribute="height" secondItem="ZBY-Mw-plf" secondAttribute="height" id="tqJ-Fa-TOF"/>
+                            <constraint firstItem="qop-PZ-CbL" firstAttribute="top" secondItem="h16-sC-wH1" secondAttribute="top" id="xyG-Zw-PHa"/>
+                            <constraint firstItem="wkk-4q-P4w" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="y11-of-h4G"/>
+                            <constraint firstItem="0GV-Y4-Lqj" firstAttribute="leading" secondItem="1hI-lu-GCD" secondAttribute="leading" id="yY3-qZ-qGN"/>
+                            <constraint firstItem="qop-PZ-CbL" firstAttribute="height" secondItem="h16-sC-wH1" secondAttribute="height" id="zV8-EB-ejx"/>
+                            <constraint firstItem="xH1-TX-5DS" firstAttribute="width" secondItem="ZBY-Mw-plf" secondAttribute="width" id="zet-9b-VS5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="wkk-4q-P4w" id="qAW-7O-KAf"/>
+                        <outlet property="cardView" destination="1hI-lu-GCD" id="cSQ-LE-PgC"/>
+                        <outlet property="coffeeImage" destination="qop-PZ-CbL" id="yUt-7A-bRq"/>
+                        <outlet property="collectionView" destination="0GV-Y4-Lqj" id="qHh-jy-dRl"/>
+                        <outlet property="logoImageView" destination="3ah-gB-V6A" id="iRw-WX-EdJ"/>
+                        <outlet property="punchImageView" destination="xH1-TX-5DS" id="1QU-c9-7Zn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="52" y="25.637181409295355"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AddPunch" width="153.19148254394531" height="153.19148254394531"/>
+        <image name="CoavaLogo_rotated" width="1319" height="2588"/>
+        <image name="CoffeeBeansLight" width="1050" height="700"/>
+        <image name="UseCardCoffee" width="72" height="72"/>
+    </resources>
 </document>

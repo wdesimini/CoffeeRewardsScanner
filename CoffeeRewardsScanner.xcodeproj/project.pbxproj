@@ -7,21 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF3AD93E22305CA300F7DCE3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3AD93D22305CA300F7DCE3 /* Extensions.swift */; };
+		CF3AD94322306F3400F7DCE3 /* CoffeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3AD94222306F3400F7DCE3 /* CoffeeView.swift */; };
+		CF3AD945223198D800F7DCE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF3AD944223198D800F7DCE3 /* Assets.xcassets */; };
 		CF4157A7222F59FC00FAF4CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4157A6222F59FC00FAF4CB /* AppDelegate.swift */; };
-		CF4157A9222F59FC00FAF4CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4157A8222F59FC00FAF4CB /* ViewController.swift */; };
+		CF4157A9222F59FC00FAF4CB /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4157A8222F59FC00FAF4CB /* CardViewController.swift */; };
 		CF4157AC222F59FC00FAF4CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF4157AA222F59FC00FAF4CB /* Main.storyboard */; };
-		CF4157AE222F59FE00FAF4CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF4157AD222F59FE00FAF4CB /* Assets.xcassets */; };
 		CF4157B1222F59FE00FAF4CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF4157AF222F59FE00FAF4CB /* LaunchScreen.storyboard */; };
+		CF4157BB222F663C00FAF4CB /* RewardPointCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4157BA222F663C00FAF4CB /* RewardPointCounter.swift */; };
+		CF4157BD22302E4F00FAF4CB /* CameraFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4157BC22302E4F00FAF4CB /* CameraFrame.swift */; };
+		CF4157BF223049A600FAF4CB /* CoffeeCupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4157BE223049A600FAF4CB /* CoffeeCupCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF3AD93D22305CA300F7DCE3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CF3AD94222306F3400F7DCE3 /* CoffeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeView.swift; sourceTree = "<group>"; };
+		CF3AD944223198D800F7DCE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF4157A3222F59FC00FAF4CB /* CoffeeRewardsScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeRewardsScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF4157A6222F59FC00FAF4CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CF4157A8222F59FC00FAF4CB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CF4157A8222F59FC00FAF4CB /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		CF4157AB222F59FC00FAF4CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CF4157AD222F59FE00FAF4CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF4157B0222F59FE00FAF4CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF4157B2222F59FE00FAF4CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF4157BA222F663C00FAF4CB /* RewardPointCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardPointCounter.swift; sourceTree = "<group>"; };
+		CF4157BC22302E4F00FAF4CB /* CameraFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraFrame.swift; sourceTree = "<group>"; };
+		CF4157BE223049A600FAF4CB /* CoffeeCupCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeCupCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +45,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF3AD93F223062A300F7DCE3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CF4157BA222F663C00FAF4CB /* RewardPointCounter.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CF3AD940223062AA00F7DCE3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CF4157A8222F59FC00FAF4CB /* CardViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CF3AD941223062AE00F7DCE3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CF4157BC22302E4F00FAF4CB /* CameraFrame.swift */,
+				CF3AD94222306F3400F7DCE3 /* CoffeeView.swift */,
+				CF4157BE223049A600FAF4CB /* CoffeeCupCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CF41579A222F59FC00FAF4CB = {
 			isa = PBXGroup;
 			children = (
@@ -55,10 +91,13 @@
 			isa = PBXGroup;
 			children = (
 				CF4157A6222F59FC00FAF4CB /* AppDelegate.swift */,
-				CF4157A8222F59FC00FAF4CB /* ViewController.swift */,
+				CF3AD93F223062A300F7DCE3 /* Models */,
+				CF3AD941223062AE00F7DCE3 /* Views */,
+				CF3AD940223062AA00F7DCE3 /* Controllers */,
+				CF3AD93D22305CA300F7DCE3 /* Extensions.swift */,
 				CF4157AA222F59FC00FAF4CB /* Main.storyboard */,
-				CF4157AD222F59FE00FAF4CB /* Assets.xcassets */,
 				CF4157AF222F59FE00FAF4CB /* LaunchScreen.storyboard */,
+				CF3AD944223198D800F7DCE3 /* Assets.xcassets */,
 				CF4157B2222F59FE00FAF4CB /* Info.plist */,
 			);
 			path = CoffeeRewardsScanner;
@@ -123,7 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF4157B1222F59FE00FAF4CB /* LaunchScreen.storyboard in Resources */,
-				CF4157AE222F59FE00FAF4CB /* Assets.xcassets in Resources */,
+				CF3AD945223198D800F7DCE3 /* Assets.xcassets in Resources */,
 				CF4157AC222F59FC00FAF4CB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,8 +174,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF4157A9222F59FC00FAF4CB /* ViewController.swift in Sources */,
+				CF4157BD22302E4F00FAF4CB /* CameraFrame.swift in Sources */,
+				CF3AD94322306F3400F7DCE3 /* CoffeeView.swift in Sources */,
+				CF3AD93E22305CA300F7DCE3 /* Extensions.swift in Sources */,
+				CF4157BF223049A600FAF4CB /* CoffeeCupCollectionViewCell.swift in Sources */,
+				CF4157A9222F59FC00FAF4CB /* CardViewController.swift in Sources */,
 				CF4157A7222F59FC00FAF4CB /* AppDelegate.swift in Sources */,
+				CF4157BB222F663C00FAF4CB /* RewardPointCounter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
