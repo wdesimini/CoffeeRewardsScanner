@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 
+
 class CardViewController: UIViewController{
     
     @IBOutlet weak var backgroundImageView: UIImageView!
@@ -19,57 +20,53 @@ class CardViewController: UIViewController{
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var coffeeImage: UIImageView!
     
-    #warning("FOR MULTIPLE SHOP MARKETING DELETE")
-    let shop = ShopView(shop: .coava)
+    // orange square in middle of frame
+    private lazy var cameraFrame = createCameraFrame()
     
-    var rewardPointCounter = RewardPointCounter()
-    var video = AVCaptureVideoPreviewLayer()
+    private func createCameraFrame() -> UIView {
+        let cameraFrame = CameraFrame(frame: .zero)
+        cameraFrame.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
+        cameraFrame.center = view.center
+        view.addSubview(cameraFrame)
+        return cameraFrame
+    }
+    
+    var user: User?
+    
+    var card: Card? {
+        didSet {
+            refreshCardView()
+        }
+    }
     
     //Creating session
+    var video = AVCaptureVideoPreviewLayer()
     let session = AVCaptureSession()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
+    override func loadView() {
+        super.loadView()
+        card = Card(shop: .coava)
+        setCardViews()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setViews()
         setAVSession()
-        setRewardsCounter()
         addAnimationForEnoughPunches()
     }
     
-    func setViews() {
-        // setCardViews
-        setCardViews()
+    private func setCardViews() {
+        cardView.configureCardView()
         
-        // set background view
-        setBackground()
-    }
-    
-    func setCardViews() {
-        
-        let cornerRadius: CGFloat = 10
-        cardView.layer.cornerRadius = cornerRadius
-        
-        // add shadow
-        cardView.layer.shadowColor = UIColor.black.cgColor
-        cardView.layer.shadowOffset = CGSize(width: 0, height: 1.75)
-        cardView.layer.shadowRadius = 10.0
-        cardView.layer.shadowOpacity = 0.5
-        
-        #warning("FOR MULTIPLE SHOP MARKETING DELETE")
         // shop specific modifications
-        logoImageView.image = shop.logoImage
-        cardView.backgroundColor = shop.cardColor
-        punchImageView.image = shop.punchImage
-    }
-    
-    func setBackground() {
-        
-        backgroundImageView.image = shop.backgroundImage
+        backgroundImageView.image = card!.backgroundImage
+        cardView.backgroundColor = card!.color
+        logoImageView.image = card!.logoImage
+        punchImageView.image = card!.punchImage
     }
     
     func setAVSession() {
@@ -87,24 +84,15 @@ class CardViewController: UIViewController{
         
         let output = AVCaptureMetadataOutput()
         session.addOutput(output)
-        
         output.setMetadataObjectsDelegate(self, queue: .main)
         output.metadataObjectTypes = [.qr]
         
         video = AVCaptureVideoPreviewLayer(session: session)
         video.frame = UIScreen.main.bounds
         view.layer.addSublayer(video)
+        video.addSublayer(cameraFrame.layer)
+        video.isHidden = true
     }
-    
-    
-    func setRewardsCounter() {
-        let userCount = UserDefaults.standard.value(forKey: "user-count") as? Int
-        
-        rewardPointCounter.pointCount = userCount ?? 0
-    }
-    
-    // orange square in middle of frame
-    let cameraFrame = CameraFrame(frame: CGRect.zero)
     
     @IBAction func getCode(_ sender: Any) {
         session.startRunning()
@@ -113,27 +101,10 @@ class CardViewController: UIViewController{
     
     func setSessionView() {
         video.isHidden = false
-        
-        cameraFrame.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
-        cameraFrame.center = view.center
-        
-        view.addSubview(cameraFrame)
     }
     
     @IBAction func usePointsTapped(_ sender: Any) {
-        guard rewardPointCounter.pointCount >= 10 else {
-            showAlert(nil, "You don't have enough points for a free cup yet")
-            
-            return
-        }
-        
-        // call usePoints method on rewards counter
-        rewardPointCounter.usePoints()
-        
-        // refresh view based on rewardPointCounter
-        refreshView()
-        
-        // show alert saying enjoy your free drink
+        card!.usePoints()
         showAlert("Enjoy Your Drink!", "Show this to the barista to redeem 1 free drink")
         
 //        pourCoffee()
@@ -143,45 +114,33 @@ class CardViewController: UIViewController{
         coffeeImage.layer.removeAllAnimations()
     }
     
-    func refreshView() {
+    private func refreshCardView() {
         // reload collectionView to see how many punched
         collectionView.reloadData()
-        
         addAnimationForEnoughPunches()
     }
     
     func addAnimationForEnoughPunches() {
-        // check if quantity at least 10, if so show use button
-        guard rewardPointCounter.pointCount >= 10 else {
-            return
+        if card!.points >= 10 {
+            // animate coffeeImage
+            coffeeImage.addPulseAnimation()
+            
+            // make coffeeImage and collectionView cups glow
+            collectionView.doGlowAnimation(withColor: .yellow)
+            coffeeImage.doGlowAnimation(withColor: .yellow)
         }
-        
-        // animate coffeeImage
-        coffeeImage.addPulseAnimation()
-        
-        // make coffeeImage and collectionView cups glow
-        collectionView.doGlowAnimation(withColor: .yellow)
-        coffeeImage.doGlowAnimation(withColor: .yellow)
     }
     
     func pourCoffee() {
-        
-        let waveCount = 30
-        let coffeeView = CoffeeView(waveCount: waveCount)
+        let coffeeView = CoffeeView(waveCount: CardSizes.coffeeWaveCount)
         
         // start at bottom
-        
         coffeeView.frame.origin.y = view.frame.size.height
-        
-        // add sub views to coffee view to make it look better
-
-        // steam?
-        // noise of coffee pouring?
-        
         view.addSubview(coffeeView)
         
-        let radius = UIScreen.main.bounds.width / CGFloat(waveCount)
         // animate up screen
+        let radius = view.frame.size.width / CGFloat(CardSizes.coffeeWaveCount)
+        
         UIView.animate(withDuration: 5, animations: { coffeeView.frame.origin.y = -radius }) { _ in
             // fade out
             UIView.animate(withDuration: 1, animations: {
@@ -189,7 +148,12 @@ class CardViewController: UIViewController{
                 coffeeView.alpha = 0
             })
         }
-        
+    }
+}
+
+extension CardViewController {
+    private struct CardSizes {
+        static let coffeeWaveCount: Int = 30
     }
 }
 
@@ -199,23 +163,22 @@ extension CardViewController: AVCaptureMetadataOutputObjectsDelegate  {
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         
-        guard metadataObjects.count != 0,
+        guard
+            metadataObjects.count != 0,
             let object = metadataObjects[0] as? AVMetadataMachineReadableCodeObject else { return }
         
         if object.type == AVMetadataObject.ObjectType.qr {
             guard let stringValue = object.stringValue, let value = Int(stringValue) else { return }
-            
-            rewardPointCounter.increaseCount(by: value)
-            
-            // stop AV session
-            session.stopRunning()
-            
-            // hide AV views
-            video.isHidden = true
-            cameraFrame.removeFromSuperview()
-            
-            refreshView()
+            handlePointAddition(amount: value)
         }
+    }
+    
+    private func handlePointAddition(amount: Int) {
+        card!.addPoints(amount: amount)
+        
+        // stop AV session and hide views
+        session.stopRunning()
+        video.isHidden = true
     }
 }
 
@@ -229,12 +192,8 @@ extension CardViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoffeeCupCollectionCell", for: indexPath) as! CoffeeCupCollectionViewCell
-        
-        #warning("FOR MULTIPLE SHOP MARKETING DELETE")
-        // set cell
-        cell.unpunchedCupImage = shop.cupImage
-        cell.setImage(indexPath.item, pointCount: rewardPointCounter.pointCount)
-        
+        cell.card = card!
+        cell.setImage(indexPath.item)
         return cell
     }
 }

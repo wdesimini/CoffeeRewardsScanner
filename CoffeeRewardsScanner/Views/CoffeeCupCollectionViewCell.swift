@@ -11,19 +11,19 @@ import UIKit
 class CoffeeCupCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var cupImageView: UIImageView!
-    var unpunchedCupImage: UIImage!
+    var card: Card!
     
-    func setImage(_ index: Int, pointCount: Int) {
+    func setImage(_ index: Int) {
         
         var cupImage: UIImage
         
         // check if cup is within punch range
-        let punched = index + 1 <= pointCount
+        let punched = index + 1 <= card.points
         
         if punched {
             cupImage = UIImage(named: "RedCup")!
         } else {
-            cupImage = unpunchedCupImage
+            cupImage = card.cupImage
         }
         
         cupImageView.image = cupImage.rotate(radians: -.pi/2)
