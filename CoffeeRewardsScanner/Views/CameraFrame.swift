@@ -23,12 +23,9 @@ class CameraFrame: UIView {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         
         let path = UIBezierPath(roundedRect: rect, cornerRadius: 20.0)
-        
         context.addPath(path.cgPath)
-        
         context.setStrokeColor(UIColor.orange.cgColor)
         context.setLineWidth(15.0)
-        
         context.drawPath(using: .stroke)
     }
     

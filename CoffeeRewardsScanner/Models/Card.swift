@@ -10,25 +10,25 @@ import Foundation
 
 
 struct Card {
-    let shop: SanDiegoCoffeeShop
+    let shop: Shop
     
     var points: Int {
         get {
-            return UserDefaults.standard.value(forKey: shopKey) as? Int ?? 0
+            return UserDefaults.standard.value(forKey: shop.shopKey) as? Int ?? 0
         }
         
         set {
-            UserDefaults.standard.set(newValue, forKey: shopKey)
+            UserDefaults.standard.set(newValue, forKey: shop.shopKey)
         }
     }
-    
-    mutating func addPoints(amount: Int) {
-        points += amount
+}
+
+extension Card: Hashable {
+    static func == (lhs: Card, rhs: Card) -> Bool {
+        return lhs.shop.name == rhs.shop.name
     }
     
-    mutating func usePoints() {
-        guard points >= 10 else { return }
-        
-        points -= 10
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(shop.name)
     }
 }

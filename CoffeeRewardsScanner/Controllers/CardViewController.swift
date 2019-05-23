@@ -49,7 +49,9 @@ class CardViewController: UIViewController{
     
     override func loadView() {
         super.loadView()
-        card = Card(shop: .coava)
+        
+        let shop = ShopsData.shopList[0]
+        card = Card(shop: shop)
         setCardViews()
     }
     

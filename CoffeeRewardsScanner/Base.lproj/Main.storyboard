@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +24,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1hI-lu-GCD" userLabel="Card">
                                 <rect key="frame" x="27.5" y="53.5" width="320" height="560"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CoavaLogo_rotated" translatesAutoresizingMaskIntoConstraints="NO" id="3ah-gB-V6A">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3ah-gB-V6A">
                                         <rect key="frame" x="80" y="130" width="160" height="300"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="ZZK-jA-6oe"/>
@@ -161,9 +161,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AddPunch" width="153.19148254394531" height="153.19148254394531"/>
-        <image name="CoavaLogo_rotated" width="1319" height="2588"/>
+        <image name="AddPunch" width="100" height="100"/>
         <image name="CoffeeBeansLight" width="1050" height="700"/>
-        <image name="UseCardCoffee" width="72" height="72"/>
+        <image name="UseCardCoffee" width="96" height="96"/>
     </resources>
 </document>

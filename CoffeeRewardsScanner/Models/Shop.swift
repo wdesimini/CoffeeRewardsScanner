@@ -9,6 +9,16 @@
 import Foundation
 
 
-enum SanDiegoCoffeeShop: String {
-    case betterBuzz, birdRock, coava, communal, darkHorse, heartWork, holsem, james, lofty, moniker, subterranean, westBean
+struct Shop {
+    let name: String
+    let logoImageString: String
+    let cupImageString: String
+    let punchImageString: String
+    let backgroundImageString: String
+}
+
+extension Shop {
+    var shopKey: String {
+        return "user-points-\(name)"
+    }
 }

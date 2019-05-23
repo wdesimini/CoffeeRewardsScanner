@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF087B5E22961D0F007CF2EB /* Shop+Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF087B5D22961D0F007CF2EB /* Shop+Service.swift */; };
 		CF3AD93E22305CA300F7DCE3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3AD93D22305CA300F7DCE3 /* Extensions.swift */; };
 		CF3AD94322306F3400F7DCE3 /* CoffeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3AD94222306F3400F7DCE3 /* CoffeeView.swift */; };
 		CF3AD945223198D800F7DCE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF3AD944223198D800F7DCE3 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF087B5D22961D0F007CF2EB /* Shop+Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shop+Service.swift"; sourceTree = "<group>"; };
 		CF3AD93D22305CA300F7DCE3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CF3AD94222306F3400F7DCE3 /* CoffeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeView.swift; sourceTree = "<group>"; };
 		CF3AD944223198D800F7DCE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				CF9A483A228B27A700046F3A /* Card.swift */,
 				CFDE83C6228F2F6000182353 /* Card+Service.swift */,
 				CF80FC52228E156C00D1DCE6 /* Shop.swift */,
+				CF087B5D22961D0F007CF2EB /* Shop+Service.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				CF4157BD22302E4F00FAF4CB /* CameraFrame.swift in Sources */,
 				CF9A483B228B27A700046F3A /* Card.swift in Sources */,
 				CF80FC53228E156C00D1DCE6 /* Shop.swift in Sources */,
+				CF087B5E22961D0F007CF2EB /* Shop+Service.swift in Sources */,
 				CF3AD94322306F3400F7DCE3 /* CoffeeView.swift in Sources */,
 				CF3AD93E22305CA300F7DCE3 /* Extensions.swift in Sources */,
 				CF80FC51228E119100D1DCE6 /* User+Service.swift in Sources */,
