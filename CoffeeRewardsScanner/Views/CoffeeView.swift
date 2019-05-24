@@ -12,11 +12,9 @@ private let coffeeColor = UIColor(red: 0.435, green: 0.306, blue: 0.216, alpha: 
 
 class CoffeeView: UIView {
     
-    var waveCount: Int
+    let waveCount = 30
     
-    init(waveCount: Int) {
-        self.waveCount = waveCount
-        
+    init() {
         let bounds = UIScreen.main.bounds
         let newFrame = CGRect(x: bounds.minX, y: bounds.minY, width: bounds.width, height: bounds.height + (bounds.width / CGFloat(waveCount)))
         super.init(frame: newFrame)
@@ -78,6 +76,24 @@ class CoffeeView: UIView {
         context.setLineWidth(10.0)
         
         context.drawPath(using: .fill)
+    }
+    
+    func pourCoffee() {
+        
+        // animate up screen
+        let radius = frame.size.width / CGFloat(waveCount)
+        
+        UIView.animate(
+            withDuration: 5,
+            animations: {
+                self.frame.origin.y = -radius
+        }) { _ in
+            // fade out
+            UIView.animate(withDuration: 1, animations: {
+                // maybe add steam animation here?
+                self.alpha = 0
+            })
+        }
     }
 }
 

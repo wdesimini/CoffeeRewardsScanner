@@ -24,6 +24,15 @@ class CardViewController: UIViewController{
     @IBOutlet weak var tableViewWidth: NSLayoutConstraint!
     @IBOutlet weak var shopsButton: UIBarButtonItem!
     
+    private lazy var coffeeView = getCoffeeView()
+    
+    private func getCoffeeView() -> CoffeeView {
+        let coffeeView = CoffeeView()
+        coffeeView.frame.origin.y = view.frame.size.height // start at bottom
+        view.addSubview(coffeeView)
+        return coffeeView
+    }
+    
     var card: Card? {
         didSet {
             guard card != nil else { return }
@@ -59,14 +68,14 @@ class CardViewController: UIViewController{
         }
     }
     
-    @IBAction func getCode(_ sender: Any) {
+    @IBAction func punchTapped(_ sender: Any) {
         performSegue(withIdentifier: "avSessionSegue", sender: nil)
     }
     
     @IBAction func usePointsTapped(_ sender: Any) {
         card!.usePoints()
         showAlert("Enjoy Your Drink!", "Show this to the barista to redeem 1 free drink")
-        pourCoffee()
+        coffeeView.pourCoffee()
         
         // remove pulse and glow animations
         collectionView.layer.removeAllAnimations()
@@ -92,14 +101,13 @@ class CardViewController: UIViewController{
     private func animateShopsTableView() {
         // animate tableView to show
         UIView.animate(
-            withDuration: 0.4,
+            withDuration: 0.2,
             animations: {
                 self.setShopsView()
         })
     }
     
     private func setShopsView() {
-        
         if tableViewShowing {
             shopsButton.title = "Shops"
             tableViewLeadingConstraint.constant = tableViewWidth.constant
@@ -132,31 +140,6 @@ class CardViewController: UIViewController{
             coffeeImage.doGlowAnimation(withColor: .yellow)
         }
     }
-    
-    private func pourCoffee() {
-        let coffeeView = CoffeeView(waveCount: CardSizes.coffeeWaveCount)
-
-        // start at bottom
-        coffeeView.frame.origin.y = view.frame.size.height
-        view.addSubview(coffeeView)
-
-        // animate up screen
-        let radius = view.frame.size.width / CGFloat(CardSizes.coffeeWaveCount)
-
-        UIView.animate(withDuration: 5, animations: { coffeeView.frame.origin.y = -radius }) { _ in
-            // fade out
-            UIView.animate(withDuration: 1, animations: {
-                // maybe add steam animation here?
-                coffeeView.alpha = 0
-            })
-        }
-    }
-}
-
-extension CardViewController {
-    private struct CardSizes {
-        static let coffeeWaveCount: Int = 30
-    }
 }
 
 // Coffee cup collectionView
@@ -186,7 +169,9 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShopCell", for: indexPath)
         let shop = ShopsData.shopList[indexPath.row]
+        
         cell.textLabel?.text = shop.name
+        cell.textLabel?.textColor = cell.tintColor
         
         // put checkmark next to selected shop cell
         if shop == card?.shop {
