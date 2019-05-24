@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 struct ShopsData {
@@ -17,7 +18,15 @@ struct ShopsData {
             logoImageString: "Coava_logo",
             cupImageString: "WhiteCup",
             punchImageString: "AddPunch",
-            backgroundImageString: "GrungeBackground")
+            backgroundImageString: "GrungeBackground",
+            cardColor: .darkGray),
+        Shop(
+            name: "Better Buzz",
+            logoImageString: "BetterBuzz_logo",
+            cupImageString: "BlackCup",
+            punchImageString: "AddBlackPunch",
+            backgroundImageString: "WoodBackground",
+            cardColor: .white)
     ]
     
 }

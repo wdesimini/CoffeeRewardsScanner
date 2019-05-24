@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		CF087B5E22961D0F007CF2EB /* Shop+Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF087B5D22961D0F007CF2EB /* Shop+Service.swift */; };
+		CF087B6422984A94007CF2EB /* AVSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF087B6322984A94007CF2EB /* AVSessionViewController.swift */; };
+		CF087B6622985021007CF2EB /* QRCode.png in Resources */ = {isa = PBXBuildFile; fileRef = CF087B6522985021007CF2EB /* QRCode.png */; };
+		CF087B682298547D007CF2EB /* UserDefaults+Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF087B672298547D007CF2EB /* UserDefaults+Service.swift */; };
 		CF3AD93E22305CA300F7DCE3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3AD93D22305CA300F7DCE3 /* Extensions.swift */; };
 		CF3AD94322306F3400F7DCE3 /* CoffeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3AD94222306F3400F7DCE3 /* CoffeeView.swift */; };
 		CF3AD945223198D800F7DCE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF3AD944223198D800F7DCE3 /* Assets.xcassets */; };
@@ -25,6 +28,9 @@
 
 /* Begin PBXFileReference section */
 		CF087B5D22961D0F007CF2EB /* Shop+Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shop+Service.swift"; sourceTree = "<group>"; };
+		CF087B6322984A94007CF2EB /* AVSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVSessionViewController.swift; sourceTree = "<group>"; };
+		CF087B6522985021007CF2EB /* QRCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QRCode.png; sourceTree = "<group>"; };
+		CF087B672298547D007CF2EB /* UserDefaults+Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Service.swift"; sourceTree = "<group>"; };
 		CF3AD93D22305CA300F7DCE3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CF3AD94222306F3400F7DCE3 /* CoffeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeView.swift; sourceTree = "<group>"; };
 		CF3AD944223198D800F7DCE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,6 +66,7 @@
 				CFDE83C6228F2F6000182353 /* Card+Service.swift */,
 				CF80FC52228E156C00D1DCE6 /* Shop.swift */,
 				CF087B5D22961D0F007CF2EB /* Shop+Service.swift */,
+				CF087B672298547D007CF2EB /* UserDefaults+Service.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -68,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				CF4157A8222F59FC00FAF4CB /* CardViewController.swift */,
+				CF087B6322984A94007CF2EB /* AVSessionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -103,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				CF4157A6222F59FC00FAF4CB /* AppDelegate.swift */,
+				CF087B6522985021007CF2EB /* QRCode.png */,
 				CF3AD93F223062A300F7DCE3 /* Models */,
 				CF3AD941223062AE00F7DCE3 /* Views */,
 				CF3AD940223062AA00F7DCE3 /* Controllers */,
@@ -173,6 +182,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF087B6622985021007CF2EB /* QRCode.png in Resources */,
 				CF4157B1222F59FE00FAF4CB /* LaunchScreen.storyboard in Resources */,
 				CF3AD945223198D800F7DCE3 /* Assets.xcassets in Resources */,
 				CF4157AC222F59FC00FAF4CB /* Main.storyboard in Resources */,
@@ -190,8 +200,10 @@
 				CF9A483B228B27A700046F3A /* Card.swift in Sources */,
 				CF80FC53228E156C00D1DCE6 /* Shop.swift in Sources */,
 				CF087B5E22961D0F007CF2EB /* Shop+Service.swift in Sources */,
+				CF087B682298547D007CF2EB /* UserDefaults+Service.swift in Sources */,
 				CF3AD94322306F3400F7DCE3 /* CoffeeView.swift in Sources */,
 				CF3AD93E22305CA300F7DCE3 /* Extensions.swift in Sources */,
+				CF087B6422984A94007CF2EB /* AVSessionViewController.swift in Sources */,
 				CF4157BF223049A600FAF4CB /* CoffeeCupCollectionViewCell.swift in Sources */,
 				CFDE83C9228F2FF300182353 /* CardView.swift in Sources */,
 				CFDE83C7228F2F6000182353 /* Card+Service.swift in Sources */,

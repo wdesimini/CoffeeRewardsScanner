@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 struct Shop {
@@ -15,6 +16,17 @@ struct Shop {
     let cupImageString: String
     let punchImageString: String
     let backgroundImageString: String
+    let cardColor: UIColor
+}
+
+extension Shop: Hashable {
+    static func == (lhs: Shop, rhs: Shop) -> Bool {
+        return lhs.name == rhs.name
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+    }
 }
 
 extension Shop {

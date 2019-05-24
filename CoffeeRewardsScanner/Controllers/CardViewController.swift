@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AVFoundation
 
 
 class CardViewController: UIViewController{
@@ -20,28 +19,23 @@ class CardViewController: UIViewController{
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var coffeeImage: UIImageView!
     
-    // orange square in middle of frame
-    private lazy var cameraFrame = createCameraFrame()
-    
-    private func createCameraFrame() -> UIView {
-        let cameraFrame = CameraFrame(frame: .zero)
-        cameraFrame.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
-        cameraFrame.center = view.center
-        view.addSubview(cameraFrame)
-        return cameraFrame
-    }
-    
-    var user: User?
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tableViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var shopsButton: UIBarButtonItem!
     
     var card: Card? {
         didSet {
-            refreshCardView()
+            guard card != nil else { return }
+            UserDefaults.standard.updateCurrentCard(to: card!.shop)
+            
+            DispatchQueue.main.async {
+                self.setCardViews()
+                self.refreshCardView()
+                self.tableView.reloadData()
+            }
         }
     }
-    
-    //Creating session
-    var video = AVCaptureVideoPreviewLayer()
-    let session = AVCaptureSession()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -49,16 +43,40 @@ class CardViewController: UIViewController{
     
     override func loadView() {
         super.loadView()
-        
-        let shop = ShopsData.shopList[0]
-        card = Card(shop: shop)
-        setCardViews()
+        card = UserDefaults.standard.currentCard
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setAVSession()
-        addAnimationForEnoughPunches()
+        tableViewLeadingConstraint.constant = tableViewWidth.constant
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "avSessionSegue",
+            let destNavigationController = segue.destination as? UINavigationController {
+            let destVC = destNavigationController.visibleViewController as! AVSessionViewController
+            destVC.delegate = self
+        }
+    }
+    
+    @IBAction func getCode(_ sender: Any) {
+        performSegue(withIdentifier: "avSessionSegue", sender: nil)
+    }
+    
+    @IBAction func usePointsTapped(_ sender: Any) {
+        card!.usePoints()
+        showAlert("Enjoy Your Drink!", "Show this to the barista to redeem 1 free drink")
+        pourCoffee()
+        
+        // remove pulse and glow animations
+        collectionView.layer.removeAllAnimations()
+        coffeeImage.layer.removeAllAnimations()
+    }
+    
+    var tableViewShowing: Bool = false
+    
+    @IBAction func shopsTapped(_ sender: Any) {
+        animateShopsTableView()
     }
     
     private func setCardViews() {
@@ -71,49 +89,31 @@ class CardViewController: UIViewController{
         punchImageView.image = card!.punchImage
     }
     
-    func setAVSession() {
-        //Define capture devcie
-        guard let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
-            return
+    private func animateShopsTableView() {
+        // animate tableView to show
+        UIView.animate(
+            withDuration: 0.4,
+            animations: {
+                self.setShopsView()
+        })
+    }
+    
+    private func setShopsView() {
+        
+        if tableViewShowing {
+            shopsButton.title = "Shops"
+            tableViewLeadingConstraint.constant = tableViewWidth.constant
+            tableView.layer.shadowOpacity = 0.5
+            tableView.layer.shadowRadius = 6
+        } else {
+            shopsButton.title = "Cancel"
+            tableViewLeadingConstraint.constant = 0
+            tableView.layer.shadowOpacity = 0
+            tableView.layer.shadowRadius = 0
         }
         
-        do {
-            let input = try AVCaptureDeviceInput(device: captureDevice)
-            session.addInput(input)
-        } catch {
-            print ("ERROR")
-        }
-        
-        let output = AVCaptureMetadataOutput()
-        session.addOutput(output)
-        output.setMetadataObjectsDelegate(self, queue: .main)
-        output.metadataObjectTypes = [.qr]
-        
-        video = AVCaptureVideoPreviewLayer(session: session)
-        video.frame = UIScreen.main.bounds
-        view.layer.addSublayer(video)
-        video.addSublayer(cameraFrame.layer)
-        video.isHidden = true
-    }
-    
-    @IBAction func getCode(_ sender: Any) {
-        session.startRunning()
-        setSessionView()
-    }
-    
-    func setSessionView() {
-        video.isHidden = false
-    }
-    
-    @IBAction func usePointsTapped(_ sender: Any) {
-        card!.usePoints()
-        showAlert("Enjoy Your Drink!", "Show this to the barista to redeem 1 free drink")
-        
-//        pourCoffee()
-        
-        // remove pulse and glow animations
-        collectionView.layer.removeAllAnimations()
-        coffeeImage.layer.removeAllAnimations()
+        view.layoutSubviews()
+        tableViewShowing = !tableViewShowing
     }
     
     private func refreshCardView() {
@@ -122,7 +122,7 @@ class CardViewController: UIViewController{
         addAnimationForEnoughPunches()
     }
     
-    func addAnimationForEnoughPunches() {
+    private func addAnimationForEnoughPunches() {
         if card!.points >= 10 {
             // animate coffeeImage
             coffeeImage.addPulseAnimation()
@@ -133,16 +133,16 @@ class CardViewController: UIViewController{
         }
     }
     
-    func pourCoffee() {
+    private func pourCoffee() {
         let coffeeView = CoffeeView(waveCount: CardSizes.coffeeWaveCount)
-        
+
         // start at bottom
         coffeeView.frame.origin.y = view.frame.size.height
         view.addSubview(coffeeView)
-        
+
         // animate up screen
         let radius = view.frame.size.width / CGFloat(CardSizes.coffeeWaveCount)
-        
+
         UIView.animate(withDuration: 5, animations: { coffeeView.frame.origin.y = -radius }) { _ in
             // fade out
             UIView.animate(withDuration: 1, animations: {
@@ -156,31 +156,6 @@ class CardViewController: UIViewController{
 extension CardViewController {
     private struct CardSizes {
         static let coffeeWaveCount: Int = 30
-    }
-}
-
-// Scanning QR Code
-
-extension CardViewController: AVCaptureMetadataOutputObjectsDelegate  {
-    
-    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        
-        guard
-            metadataObjects.count != 0,
-            let object = metadataObjects[0] as? AVMetadataMachineReadableCodeObject else { return }
-        
-        if object.type == AVMetadataObject.ObjectType.qr {
-            guard let stringValue = object.stringValue, let value = Int(stringValue) else { return }
-            handlePointAddition(amount: value)
-        }
-    }
-    
-    private func handlePointAddition(amount: Int) {
-        card!.addPoints(amount: amount)
-        
-        // stop AV session and hide views
-        session.stopRunning()
-        video.isHidden = true
     }
 }
 
@@ -198,4 +173,41 @@ extension CardViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.setImage(indexPath.item)
         return cell
     }
+}
+
+// Shops tableView
+
+extension CardViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ShopsData.shopList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ShopCell", for: indexPath)
+        let shop = ShopsData.shopList[indexPath.row]
+        cell.textLabel?.text = shop.name
+        
+        // put checkmark next to selected shop cell
+        if shop == card?.shop {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        card = Card(shop: ShopsData.shopList[indexPath.row])
+        animateShopsTableView()
+    }
+}
+
+extension CardViewController: AVSessionViewControllerDelegate {
+    
+    func captureOutput(value: Int) {
+        card!.addPoints(amount: value)
+    }
+    
 }

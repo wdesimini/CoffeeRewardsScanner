@@ -25,7 +25,7 @@ extension Card {
     }
     
     var color: UIColor {
-        return .darkGray
+        return shop.cardColor
     }
     
     var cupImage: UIImage {
