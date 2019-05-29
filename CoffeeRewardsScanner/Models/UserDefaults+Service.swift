@@ -13,7 +13,6 @@ import UIKit
 extension UserDefaults {
     
     var currentCard: Card {
-        
         guard
             let shopName = value(forKey: UserDefaultKey.currentCardName) as? String,
             let currentShop = (ShopsData.shopList.filter { $0.name == shopName }).first else {
@@ -28,8 +27,33 @@ extension UserDefaults {
     func updateCurrentCard(to shop: Shop) {
         set(shop.name, forKey: UserDefaultKey.currentCardName)
     }
+    
+    var updateByRegion: Bool {
+        return value(forKey: UserDefaultKey.updateByRegion) as? Bool ?? true // default is true
+    }
+    
+    func toggleUpdateByRegionSetting() {
+        let currentSetting = updateByRegion
+        set(!currentSetting, forKey: UserDefaultKey.updateByRegion)
+    }
+    
+    open override func didChangeValue(forKey key: String) {
+        switch key {
+        case UserDefaultKey.updateByRegion:
+            let locationManager = LocationManager.shared
+            
+            if UserDefaults.standard.updateByRegion {
+                locationManager.startMonitoringByRegion()
+            } else {
+                locationManager.stopMonitoringByRegion()
+            }
+        default: break
+        }
+    }
 }
 
 private struct UserDefaultKey {
     static let currentCardName = "currentCard-shopName"
+    static let updateByRegion = "updateByRegion"
+    static let locationTracking = "locationTracking"
 }

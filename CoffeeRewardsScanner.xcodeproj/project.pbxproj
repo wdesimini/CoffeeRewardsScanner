@@ -22,8 +22,10 @@
 		CF4157BF223049A600FAF4CB /* CoffeeCupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4157BE223049A600FAF4CB /* CoffeeCupCollectionViewCell.swift */; };
 		CF80FC53228E156C00D1DCE6 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF80FC52228E156C00D1DCE6 /* Shop.swift */; };
 		CF9A483B228B27A700046F3A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9A483A228B27A700046F3A /* Card.swift */; };
+		CFD2DFDA229A0C330054D470 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2DFD9229A0C330054D470 /* LocationManager.swift */; };
+		CFD2DFDE229A42860054D470 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2DFDD229A42860054D470 /* SettingsViewController.swift */; };
+		CFD2DFE0229B16410054D470 /* Shop+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2DFDF229B16410054D470 /* Shop+Data.swift */; };
 		CFDE83C7228F2F6000182353 /* Card+Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDE83C6228F2F6000182353 /* Card+Service.swift */; };
-		CFDE83C9228F2FF300182353 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDE83C8228F2FF300182353 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +46,10 @@
 		CF4157BE223049A600FAF4CB /* CoffeeCupCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeCupCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF80FC52228E156C00D1DCE6 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		CF9A483A228B27A700046F3A /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		CFD2DFD9229A0C330054D470 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		CFD2DFDD229A42860054D470 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CFD2DFDF229B16410054D470 /* Shop+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shop+Data.swift"; sourceTree = "<group>"; };
 		CFDE83C6228F2F6000182353 /* Card+Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Service.swift"; sourceTree = "<group>"; };
-		CFDE83C8228F2FF300182353 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +70,9 @@
 				CFDE83C6228F2F6000182353 /* Card+Service.swift */,
 				CF80FC52228E156C00D1DCE6 /* Shop.swift */,
 				CF087B5D22961D0F007CF2EB /* Shop+Service.swift */,
+				CFD2DFDF229B16410054D470 /* Shop+Data.swift */,
 				CF087B672298547D007CF2EB /* UserDefaults+Service.swift */,
+				CFD2DFD9229A0C330054D470 /* LocationManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -76,6 +82,7 @@
 			children = (
 				CF4157A8222F59FC00FAF4CB /* CardViewController.swift */,
 				CF087B6322984A94007CF2EB /* AVSessionViewController.swift */,
+				CFD2DFDD229A42860054D470 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -84,7 +91,6 @@
 			isa = PBXGroup;
 			children = (
 				CF4157BC22302E4F00FAF4CB /* CameraFrame.swift */,
-				CFDE83C8228F2FF300182353 /* CardView.swift */,
 				CF4157BE223049A600FAF4CB /* CoffeeCupCollectionViewCell.swift */,
 				CF3AD94222306F3400F7DCE3 /* CoffeeView.swift */,
 			);
@@ -205,11 +211,13 @@
 				CF3AD94322306F3400F7DCE3 /* CoffeeView.swift in Sources */,
 				CF3AD93E22305CA300F7DCE3 /* Extensions.swift in Sources */,
 				CF087B6422984A94007CF2EB /* AVSessionViewController.swift in Sources */,
+				CFD2DFE0229B16410054D470 /* Shop+Data.swift in Sources */,
 				CF4157BF223049A600FAF4CB /* CoffeeCupCollectionViewCell.swift in Sources */,
-				CFDE83C9228F2FF300182353 /* CardView.swift in Sources */,
+				CFD2DFDE229A42860054D470 /* SettingsViewController.swift in Sources */,
 				CFDE83C7228F2F6000182353 /* Card+Service.swift in Sources */,
 				CF4157A9222F59FC00FAF4CB /* CardViewController.swift in Sources */,
 				CF4157A7222F59FC00FAF4CB /* AppDelegate.swift in Sources */,
+				CFD2DFDA229A0C330054D470 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

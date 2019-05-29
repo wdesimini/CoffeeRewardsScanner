@@ -48,7 +48,7 @@
                                 <rect key="frame" x="27.5" y="21.5" width="320" height="560"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0GV-Y4-Lqj">
-                                        <rect key="frame" x="20" y="15" width="70" height="530"/>
+                                        <rect key="frame" x="10" y="15" width="70" height="530"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="530" id="lea-g3-cfP"/>
@@ -140,7 +140,7 @@
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="qop-PZ-CbL" firstAttribute="width" secondItem="h16-sC-wH1" secondAttribute="width" id="2Pi-Ub-PoV"/>
-                                    <constraint firstItem="0GV-Y4-Lqj" firstAttribute="leading" secondItem="1hI-lu-GCD" secondAttribute="leading" constant="20" id="5Ms-RO-PsW"/>
+                                    <constraint firstItem="0GV-Y4-Lqj" firstAttribute="leading" secondItem="1hI-lu-GCD" secondAttribute="leading" constant="10" id="5Ms-RO-PsW"/>
                                     <constraint firstAttribute="bottom" secondItem="hGS-IL-Svc" secondAttribute="bottom" constant="40" id="8bv-oq-klp"/>
                                     <constraint firstAttribute="height" constant="560" id="9FQ-dw-mzC"/>
                                     <constraint firstItem="0GV-Y4-Lqj" firstAttribute="top" secondItem="1hI-lu-GCD" secondAttribute="top" constant="15" id="Cfi-FX-d3C"/>
@@ -191,13 +191,19 @@
                             <constraint firstItem="1hI-lu-GCD" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="kee-qX-NCx"/>
                             <constraint firstItem="wkk-4q-P4w" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="nZF-f6-QtP"/>
                             <constraint firstItem="1hI-lu-GCD" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="p74-Ix-jUP"/>
-                            <constraint firstItem="JCN-yh-Nti" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="vEu-43-SBn"/>
+                            <constraint firstItem="JCN-yh-Nti" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="vEu-43-SBn"/>
                             <constraint firstItem="wkk-4q-P4w" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="y11-of-h4G"/>
                             <constraint firstItem="JCN-yh-Nti" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="zM9-AO-ZgG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="YaD-xC-S7u">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" image="Settings_icon" id="q2B-hL-uFS">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="L1z-1m-tBh" kind="show" id="fAD-rU-dsS"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Shops" id="mIp-kk-uzJ">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -223,6 +229,79 @@
             </objects>
             <point key="canvasLocation" x="1930.4000000000001" y="25.637181409295355"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="Z8I-QV-kDc">
+            <objects>
+                <viewController id="L1z-1m-tBh" customClass="SettingsViewController" customModule="CoffeeRewardsScanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qcx-6h-Cga">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AyX-QL-sTq">
+                                <rect key="frame" x="16" y="16" width="343" height="64"/>
+                                <color key="backgroundColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="0H1-PI-qnM" userLabel="Update Card StackView">
+                                <rect key="frame" x="32" y="32" width="311" height="32"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Card With Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3j-w6-cmU">
+                                        <rect key="frame" x="0.0" y="0.0" width="208" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="208" id="CxI-D9-7pd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x9N-H6-os5">
+                                        <rect key="frame" x="262" y="0.0" width="51" height="32"/>
+                                        <color key="onTintColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="updateCardToggle:" destination="L1z-1m-tBh" eventType="valueChanged" id="gW4-cd-O1X"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="Baf-OX-W2B"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJ0-Z4-JE3">
+                                <rect key="frame" x="121" y="96" width="133" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="fln-hw-HJM"/>
+                                </constraints>
+                                <state key="normal" title="Go To App Settings">
+                                    <color key="titleColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="goToSettingsTapped:" destination="L1z-1m-tBh" eventType="touchUpInside" id="Mo8-wP-Q7I"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="0H1-PI-qnM" firstAttribute="centerX" secondItem="qcx-6h-Cga" secondAttribute="centerX" id="16B-Kc-PVQ"/>
+                            <constraint firstItem="AyX-QL-sTq" firstAttribute="centerX" secondItem="0H1-PI-qnM" secondAttribute="centerX" id="3PM-B5-zBe"/>
+                            <constraint firstItem="0H1-PI-qnM" firstAttribute="top" secondItem="jUj-rr-8NF" secondAttribute="top" constant="32" id="3fK-sd-BH2"/>
+                            <constraint firstItem="AyX-QL-sTq" firstAttribute="width" secondItem="0H1-PI-qnM" secondAttribute="width" constant="32" id="CLg-Me-z3l"/>
+                            <constraint firstItem="AyX-QL-sTq" firstAttribute="height" secondItem="0H1-PI-qnM" secondAttribute="height" constant="32" id="HW4-q4-j4n"/>
+                            <constraint firstItem="0H1-PI-qnM" firstAttribute="leading" secondItem="jUj-rr-8NF" secondAttribute="leading" constant="32" id="IQW-O6-q9t"/>
+                            <constraint firstItem="0H1-PI-qnM" firstAttribute="trailing" secondItem="jUj-rr-8NF" secondAttribute="trailing" constant="-32" id="gx1-dn-jwp"/>
+                            <constraint firstItem="oJ0-Z4-JE3" firstAttribute="centerX" secondItem="qcx-6h-Cga" secondAttribute="centerX" id="mgB-iu-z6S"/>
+                            <constraint firstItem="AyX-QL-sTq" firstAttribute="centerY" secondItem="0H1-PI-qnM" secondAttribute="centerY" id="nzQ-Xx-ZOQ"/>
+                            <constraint firstItem="oJ0-Z4-JE3" firstAttribute="top" secondItem="AyX-QL-sTq" secondAttribute="bottom" constant="16" id="qe7-Ch-UQS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jUj-rr-8NF"/>
+                    </view>
+                    <connections>
+                        <outlet property="firstBackgroundView" destination="AyX-QL-sTq" id="kiB-tD-qtD"/>
+                        <outlet property="updateCardSwitch" destination="x9N-H6-os5" id="tOx-tZ-4k6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WCC-on-6yt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2868" y="26"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="WkF-xg-YZZ">
             <objects>
@@ -231,6 +310,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="FiO-uh-Cpe">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.12941176470588237" green="0.12941176470588237" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -265,6 +345,7 @@
     <resources>
         <image name="AddPunch" width="100" height="100"/>
         <image name="CoffeeBeansLight" width="1050" height="700"/>
+        <image name="Settings_icon" width="25" height="25"/>
         <image name="UseCardCoffee" width="96" height="96"/>
     </resources>
 </document>

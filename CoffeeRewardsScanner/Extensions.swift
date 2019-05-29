@@ -123,3 +123,10 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 }
+
+// Notification Names
+
+extension NSNotification.Name {
+    static let cardUpdateByRegion = NSNotification.Name("cardUpdateByRegion")
+    static let updateByRegionToggle = NSNotification.Name("updateByRegionToggle")
+}

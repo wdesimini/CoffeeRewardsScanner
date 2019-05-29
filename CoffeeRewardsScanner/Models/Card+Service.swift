@@ -25,18 +25,38 @@ extension Card {
     }
     
     var color: UIColor {
-        return shop.cardColor
+        switch shop.cardTheme {
+        case .light:
+            return .white
+        case .dark:
+            return .darkGray
+        }
     }
     
     var cupImage: UIImage {
-        return UIImage(named: shop.cupImageString)!
+        switch shop.cardTheme {
+        case .light:
+            return UIImage(named: "BlackCup")!
+        case .dark:
+            return UIImage(named: "WhiteCup")!
+        }
     }
     
     var punchImage: UIImage {
-        return UIImage(named: shop.punchImageString)!
+        switch shop.cardTheme {
+        case .light:
+            return UIImage(named: "BlackAddPunch")!
+        case .dark:
+            return UIImage(named: "WhiteAddPunch")!
+        }
     }
     
     var backgroundImage: UIImage {
-        return UIImage(named: shop.backgroundImageString)!
+        switch shop.background {
+        case .wooden:
+            return UIImage(named: "WoodBackground")!
+        case .grunge:
+            return UIImage(named: "GrungeBackground")!
+        }
     }
 }
