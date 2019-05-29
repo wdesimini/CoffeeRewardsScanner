@@ -7,30 +7,14 @@
 //
 
 import Foundation
-import UIKit
+import CoreLocation
 
 
 struct Shop {
     let name: String
     let logoImageString: String
-    let cupImageString: String
-    let punchImageString: String
-    let backgroundImageString: String
-    let cardColor: UIColor
+    let background: CardBackground
+    let cardTheme: CardTheme
+    let coordinates: CLLocationCoordinate2D
 }
 
-extension Shop: Hashable {
-    static func == (lhs: Shop, rhs: Shop) -> Bool {
-        return lhs.name == rhs.name
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(name)
-    }
-}
-
-extension Shop {
-    var shopKey: String {
-        return "user-points-\(name)"
-    }
-}
