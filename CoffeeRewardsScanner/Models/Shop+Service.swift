@@ -8,25 +8,45 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 
-struct ShopsData {
+extension Shop {
     
-    static let shopList = [
-        Shop(
-            name: "Coava",
-            logoImageString: "Coava_logo",
-            cupImageString: "WhiteCup",
-            punchImageString: "AddPunch",
-            backgroundImageString: "GrungeBackground",
-            cardColor: .darkGray),
-        Shop(
-            name: "Better Buzz",
-            logoImageString: "BetterBuzz_logo",
-            cupImageString: "BlackCup",
-            punchImageString: "AddBlackPunch",
-            backgroundImageString: "WoodBackground",
-            cardColor: .white)
-    ]
+    enum CardTheme {
+        case light, dark
+    }
     
+    enum CardBackground {
+        case wooden, grunge
+    }
+    
+    var shopKey: String {
+        return "user-points-\(name)"
+    }
+    
+    var regionId: String {
+        return "region-\(name)"
+    }
+    
+    var circularRegion: CLCircularRegion {
+        let region = CLCircularRegion(
+            center: coordinates,
+            radius: 100.0,
+            identifier: regionId)
+        
+        region.notifyOnEntry = true
+        region.notifyOnExit = false
+        return region
+    }
+}
+
+extension Shop: Hashable {
+    static func == (lhs: Shop, rhs: Shop) -> Bool {
+        return lhs.name == rhs.name
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+    }
 }
